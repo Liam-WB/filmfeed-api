@@ -33,7 +33,7 @@ SECRET_KEY = 'django-insecure-zdxch9@_lby!1$-f^2@36t(s49n3#h4$(-%ho214d3!l_cz7ne
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['8000-liam-wb-filmfeed-api-0umrsa9ony.us2.codeanyapp.com']
 
 
 # Application definition
