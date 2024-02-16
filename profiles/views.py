@@ -17,6 +17,9 @@ class ProfileList(APIView):
         serializer = ProfileSerializer(
             profiles, many=True, context={'request': request}
         )
+        type_serializer = ProfileSerializer(
+            profiles, many=True, context={'request': request}
+        )
         return Response(serializer.data)
 
 
