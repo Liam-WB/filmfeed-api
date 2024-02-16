@@ -6,8 +6,8 @@ from .serializers import PostSerializer
 
 class PostList(generics.ListCreateAPIView):
     """
-    List posts or create a post if logged in
-    The perform_create method associates the post with the logged in user.
+    List posts or create-a-post form if logged in
+    perform_create method associates the post with the logged in user.
     """
     serializer_class = PostSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
@@ -19,7 +19,7 @@ class PostList(generics.ListCreateAPIView):
 
 class PostDetail(generics.RetrieveUpdateDestroyAPIView):
     """
-    Retrieve a post and edit or delete it if you own it.
+    Retrieve a post/edit or delete if you own it.
     """
     serializer_class = PostSerializer
     permission_classes = [IsOwnerOrReadOnly]
