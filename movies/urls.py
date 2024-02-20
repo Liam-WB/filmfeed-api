@@ -1,5 +1,5 @@
 from django.urls import path
-from posts import views
+from movies import views
 
 urlpatterns = [
     path('movies/', views.MovieList.as_view()),
