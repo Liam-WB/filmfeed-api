@@ -1,6 +1,10 @@
 from django.db import models
 from django.contrib.auth.models import User
+import requests
+from env import OMDB_API_KEY
 
+
+"""
 RATINGS=(
     ('5', '5 Star'),
     ('4', '4 Star'),
@@ -35,23 +39,23 @@ GENRE=(
     ('Musical','Musical'),
     ('News','News'),
 )
+"""
 
 
 class Movie(models.Model):
     title=models.CharField(max_length=400)
-    description=models.TextField()
-    created=models.DateField()
-    rated=models.CharField(choices=RATINGS,max_length=1)
-    duration=models.CharField(max_length=10)
-    genre=models.CharField(choices=GENRE, blank=True, max_length=15)
-    actors=models.CharField(max_length=400)
-    country=models.CharField(max_length=100)
-    type=models.CharField(choices=TYPE,max_length=15)
-    poster=models.ImageField(
-        upload_to='images/', default='../default_post_rgq6aq', blank=True
-    )
-    director=models.CharField(max_length=200)
-    language=models.CharField(max_length=30)
 
-    def __str__(self):
-        return f'{self.id} {self.title}'
+    def get_movie_data(self):
+        url = f'http://www.omdbapi.com/?apikey={OMDB_API_KEY}&t={self.title}'
+        response = requests.get(url)
+        data = response.json()
+        return data
+
+    def save(self, *args, **kwargs):
+        # Fetches movie data, then saves
+        movie_data = self.get_movie_data()
+        
+        # Updates fields with data from the API's response
+        self.title = movie_data.get('Title', '')
+        
+        super().save(*args, **kwargs)
