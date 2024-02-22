@@ -8,5 +8,5 @@ class MovieSerializer(serializers.ModelSerializer):
         read_only_fields = ['movie_data']
 
     def create(self, validated_data):
-        validated_data.pop('movie_data', None)
+        validated_data.pop('movie_data', None) # SO CAN'T BE MODIFIED - DELETE IF WANT TO MODIFY IN UPDATE
         return super().create(validated_data)
