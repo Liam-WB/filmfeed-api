@@ -4,4 +4,9 @@ from .models import Movie
 class MovieSerializer(serializers.ModelSerializer):
     class Meta:
         model = Movie
-        fields = '__all__'
+        fields = ['id', 'title', 'movie_data']
+        read_only_fields = ['movie_data']
+
+    def create(self, validated_data):
+        validated_data.pop('movie_data', None)
+        return super().create(validated_data)
