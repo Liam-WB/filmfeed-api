@@ -16,6 +16,8 @@ import os
 if os.path.exists('env.py'):
     import env
 
+#.env omdb api key
+
 CLOUDINARY_STORAGE = {
     'CLOUDINARY_URL': os.environ.get('CLOUDINARY_URL')
 }

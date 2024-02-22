@@ -1,39 +1,36 @@
 from django.db import models
-import requests
-from env import OMDB_API_KEY
+from django.db.models import JSONField
+import requests, os
 
+if os.path.exists('env.py'):
+    import env
+
+OMDB_API_KEY = os.environ.get('OMDB_API_KEY')
 
 class Movie(models.Model):
-    title = models.CharField(max_length=100)
-    year = models.CharField(blank=True, max_length=4)
-    imdb_id = models.CharField(blank=True, max_length=20)
-    plot = models.TextField(blank=True)
-    poster = models.ImageField(
-        upload_to='images/', default='../default_profile_qdjgyp'
-    )
-    
+    title = models.CharField(max_length=255)
+    movie_data = JSONField(null=True, blank=True)
+
     def get_movie_data(self):
-        # Requests movie information, OMDB_API_KEY is replaced with imported value from env
         url = f'http://www.omdbapi.com/?apikey={OMDB_API_KEY}&t={self.title}'
-        response = requests.get(url)
-        data = response.json()
-        
-        if response.status_code == 200 and data.get('Response') == 'True':
-            return cls(
-                title=data['Title'],
-                year=data['Year'],
-                imdb_id=data['imdbID'],
-                plot=data['Plot'],
-                poster=data['Poster']
-            )
-        else:
+        try:
+            response = requests.get(url)
+            response.raise_for_status()
+            data = response.json()
+            return data
+        except requests.RequestException as e:
+            print(f"Error: {e}")
             return None
 
     def save(self, *args, **kwargs):
-        # Fetches movie data, then saves
         movie_data = self.get_movie_data()
         
-        # Updates fields with data from the API's response
-        self.title = movie_data.get('Title', '')
-
-        super().save(*args, **kwargs)
+        if movie_data:
+            self.movie_data = movie_data
+            if 'Title' in movie_data:
+                self.title = movie_data.get('Title', '')
+                super().save(*args, **kwargs)
+            else:
+                print("Error: Movie requires all data to save.")
+        else:
+            print("Error: Movie not found.")
