@@ -1,24 +1,37 @@
 """from django.db.models import query"""
 from .models import Movie
 """from django.shortcuts import render"""
-from rest_framework import generics
+from rest_framework import generics, filters
 from .serializers import MovieSerializer
-"""from rest_framework.pagination import PageNumberPagination
-from django_filters.rest_framework import DjangoFilterBackend"""
+from django_filters.rest_framework import DjangoFilterBackend
 
-class MovieList(generics.ListCreateAPIView):
+class MovieList(generics.ListAPIView):
     queryset=Movie.objects.all()
     serializer_class=MovieSerializer
-    """
-    pagination_class=PageNumberPagination
-    filter_backends=[DjangoFilterBackend,]
-    filterset_fields=['title','genre','language','type']
+    filter_backends=[
+        DjangoFilterBackend,
+        filters.SearchFilter,
+        filters.OrderingFilter,
+        ]
+    search_fields = ['title', 'year']
+    ordering_fields = ['title', 'year']
+    filterset_fields=['title',]
 
     def perform_create(self, serializer):
-        serializer.save(owner=self.request.user)
+        title = self.request.data.get('title')
+        movie = Movie.create_from_api(title)
+        if movie:
+            serializer.save(
+                title=movie.title,
+                year=movie.year,
+                imdb_id=movie.imdb_id,
+                plot=movie.plot,
+                poster=movie.poster
+            )
+        else:
+            serializer.validated_data['error'] = 'Movie not found'
 
 
 class MovieDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset=Movie.objects.all()
-    lookup_field='title'
-    serializer_class=MovieSerializer"""
+    serializer_class=MovieSerializer
