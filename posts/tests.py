@@ -36,7 +36,7 @@ class PostDetailViewTests(APITestCase):
             owner=john, title='a title', content='johns content'
         )
         Post.objects.create(
-            owner=ben, title='a title', content='ben content'
+            owner=ben, title='a second title', content='bens content'
         )
 
     def test_can_retrieve_post_with_valid_id(self):
@@ -47,6 +47,8 @@ class PostDetailViewTests(APITestCase):
     def test_cant_retrieve_post_using_invalid_id(self):
         response = self.client.get('/posts/999/')
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+        #1 ERROR, 1 FAIL
 
     def test_user_can_update_own_post(self):
         self.client.login(username='john', password='password')
