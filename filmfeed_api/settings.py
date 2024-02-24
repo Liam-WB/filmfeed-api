@@ -60,7 +60,7 @@ REST_AUTH_SERIALIZERS = {
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = 'DEV' in os.environ
+DEBUG = TRUE  #'DEV' in os.environ
 
 ALLOWED_HOSTS = ['localhost', 'filmfeed-api.herokuapp.com', '8000-liamwb-filmfeedapi-xudavtp4b2k.ws-eu108.gitpod.io']
 
