@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import dj_database_url
-import os
+import os, re
 
 if os.path.exists('env.py'):
     import env
@@ -62,7 +62,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEV' in os.environ
 
-ALLOWED_HOSTS = ['localhost', 'filmfeed-api.herokuapp.com', 'filmfeed-api-d8205608db2c.herokuapp.com']
+ALLOWED_HOSTS = ['localhost', 'filmfeed-api.herokuapp.com', 'filmfeed-api-d8205608db2c.herokuapp.com', '8000-liamwb-filmfeedapi-xudavtp4b2k.ws-eu108.gitpod.io']
 
 
 # Application definition
