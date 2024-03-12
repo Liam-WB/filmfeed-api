@@ -19,9 +19,9 @@ class MovieList(generics.ListCreateAPIView):
         else:
             raise serializers.ValidationError("Title field is required.")
 
-class MovieDetail(generics.RetrieveUpdateDestroyAPIView):
+class MovieDetail(generics.RetrieveUpdateAPIView):
     """
     Retrieve a movie.
     """
     serializer_class = MovieSerializer
-    queryset = Movie.objects.all
+    queryset = Movie.objects.all()
