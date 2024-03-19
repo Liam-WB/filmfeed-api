@@ -2,6 +2,8 @@ from django.db import models
 from django.db.models import JSONField
 import requests, os
 
+# TEMPORARY MODEL
+
 if os.path.exists('env.py'):
     import env
 
