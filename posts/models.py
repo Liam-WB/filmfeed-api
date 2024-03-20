@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.db.models import JSONField
 
 
 class Post(models.Model):
@@ -12,7 +11,7 @@ class Post(models.Model):
     image = models.ImageField(
         upload_to='images/', default='../default_post_ygsaqt', blank=True
     )
-    movie = JSONField(null=True, blank=True)
+    movie = models.TextField(blank=True, default="")
 
     class Meta:
         ordering = ['-created_at']
