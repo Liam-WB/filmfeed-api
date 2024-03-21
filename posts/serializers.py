@@ -3,6 +3,32 @@ from posts.models import Post
 from likes.models import Like
 
 
+class OMDBSerializer(serializers.Serializer):
+    title = serializers.CharField()
+    actors = serializers.CharField()
+    boxoffice = serializers.CharField()
+    country = serializers.CharField()
+    dvd = serializers.CharField()
+    director = serializers.CharField()
+    genre = serializers.CharField()
+    language = serializers.CharField()
+    metascore = serializers.CharField()
+    plot = serializers.CharField()
+    poster = serializers.CharField()
+    production = serializers.CharField()
+    rated = serializers.CharField()
+    ratings = serializers.CharField()
+    release = serializers.CharField()
+    respone = serializers.CharField()
+    runtime = serializers.CharField()
+    type = serializers.CharField()
+    website = serializers.CharField()
+    writer = serializers.CharField()
+    year = serializers.CharField()
+    imdbid = serializers.CharField()
+    imdbrating = serializers.CharField()
+    imdbvotes = serializers.CharField()
+
 class PostSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
@@ -11,6 +37,15 @@ class PostSerializer(serializers.ModelSerializer):
     like_id = serializers.SerializerMethodField()
     likes_count = serializers.ReadOnlyField()
     comments_count = serializers.ReadOnlyField()
+    movie_data = OMDBSerializer(required=False)
+
+    def create(self, validated_data):
+        movie_data = validated_data.pop('movie_data', None)
+        instance = super().create(validated_data)
+        if movie_data:
+            instance.movie = movie_data
+            instance.save()
+        return instance
 
     def validate_image(self, value):
         if value.size > 2 * 1024 * 1024:
@@ -44,5 +79,5 @@ class PostSerializer(serializers.ModelSerializer):
             'id', 'owner', 'is_owner', 'profile_id',
             'profile_image', 'created_at', 'updated_at',
             'title', 'content', 'image', 'like_id', 'likes_count',
-            'comments_count', 'movie',
+            'comments_count', 'movie_data',
         ]
