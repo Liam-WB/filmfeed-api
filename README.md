@@ -229,3 +229,29 @@ Within the likes model list view in the DRF API, users can view a full list of a
 
 If the user is logged in, the create form is displayed to create a new like. The post they want to like can be selected on the form. Users are unable to like the same post twice, as they'll receive an error message reading that they can't like the same post, and duplicate likes can't be created. If a user attempts to like a post they created, the API will return an error message saying that they can't like their own post and the like was not created. Just like above, logged in users are given functionality to delete their own likes.
 
+#### Comments Data
+
+Within the comments model list view in the DRF API, users can view a full list of all logged post comments in the app.
+
+![Comments list](md_images/Screenshot%202024-03-24%20230641.png)
+
+##### Comments model fields:
+
+* owner
+* post
+* created_at
+* updated_at
+* content
+
+##### Comments serializer fields:
+
+* is_owner
+* profile_id
+* profile_image
+
+##### Ordering / filtering methods, parameters:
+
+* post
+
+In the development build, a filter box was implemented to filter the comments by the post they are linked to. If the user is logged in, a create form is displayed. Just like the likes create form, the user is given the option on what post to create their comment. On the comment post page the user is given edit and delete functionality if they own the comment. Just as before, a pre-populated form is returned for the edit functionality.
+
