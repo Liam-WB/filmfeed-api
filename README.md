@@ -272,3 +272,21 @@ Within the followers model list view, users can view a full list of all logged p
 * followed_name
 
 Logged in users will receive a form for creating a new follower post. The user is able to select the profile for the follow submission. If a user tries to follow the same profile twice, they'll receive an error message reading that they're already following the selected profile, and the duplicate follow post is unable to be created. Once logged in, if the user views their own follow, additional Delete functionality becomes visible.
+
+## Database skeleton
+
+### Database design
+
+#### ERD (Entity Relationship Diagram)
+
+The following ERD was concepted using the above data, models and fields. The relationships between all these models are also shown in the diagram:
+
+![ERD](md_images/Initial%20regular%20user%20ERD.png)
+
+* The data model logic was developed using this ERD as a plan.
+
+As shown in the ERD all data types are directly connected to the users, and therefore if a user is deleted from the database, all related information is also removed from the database, as intended. Initially the movies model was named the watch history and would function slightly differently: It was planned to contain the logic for a component that would later be added within the profile page, as a secondary container for profile information, however it was later decided that a movie model, and movie data that connects to a post would be more beneficial as the movie implementation would be in the forefront of the website and more visible. With more time, a watchg history model would have been created, as shown in the project future consideration user stories category.
+
+## Testing
+
+Please click this [link](#) to view the filmfeed DRF API TEST.md file.
