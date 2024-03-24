@@ -12,3 +12,17 @@ Live API [link](https://filmfeed-api-d8205608db2c.herokuapp.com/).
 
 API Project (Heroku) [link](https://dashboard.heroku.com/apps/filmfeed-api).
 
+## Directory of contents
+
+* Database strategy
+    * Agile Methodology
+    * Target Audience
+* Database structure
+    * Features
+* Database skeleton
+    * Database Design
+* Technologies
+* Testing
+* Deployment
+* Credits
+---
