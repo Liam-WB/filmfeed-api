@@ -17,7 +17,8 @@ API Project (Heroku) [link](https://dashboard.heroku.com/apps/filmfeed-api).
 * Database strategy
     * Agile Methodology
     * Epics
-    * Target Audience
+    * Developer User Stories
+    * User Stories
 * Database structure
     * Features
 * Database skeleton
@@ -88,3 +89,19 @@ User stories were categorised into the 2 following milestones:
 * As a logged in user I can like a comment so that I can interact with a user and indicate I enjoyed their comment
 * As a logged in user I can update my profile so that others can view my profile information
 * As a logged in user I can link movies to my post so that I can show others what movie I am watching
+
+## Database structure
+
+### Features
+
+The backend API (Built with Django Rest Framework) used 2 different buiilds depending on development stages. The first was the development build which was connected to a local SQL database for testing purposes. The project implemented generic views to allow developers to use create update views to create, update and delete data via the view using GET and POST requests. On the other hand, the production build (predominantly used only for storing data rather than creating via the live project for simplicity), is connected to a PostgresQL database via [Railway](https://railway.app/project/349253d3-daa3-45c1-90ec-dfc1af58bb4e), which can be accessed to view all the data and its variables in easily accessible rows and columns.
+
+#### Homepage
+
+When entering the API, you'll be directed to the root route homepage, and greeted with the API's welcome message to confirm you've successfully entered the site.
+
+![Welcome message](md_images/Screenshot%202024-03-24%20205224.png)
+
+#### Profile Data
+
+The profile model view will display a list of posts, each containing their respective data fields. Each data field will return data (or null) depending on the data created via form submission, admin panel, superuser creation. The posts list view can be accessed via the url 
