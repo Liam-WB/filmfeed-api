@@ -215,3 +215,17 @@ In this case, the movies model here does not currently store the site's logged m
 
 As mentioned above, there is a filter option to allow users to change their search queries depending on movie title. They are also able to log movies to the api by searching a movie title which in turn requests a movie with the closest name to the search query, via the omdb api which will then return the movie's information and categorise it in it's respective fields. The data returned is parsed as JSON, making the data easily readable.
 
+#### Likes Data
+
+Within the likes model list view in the DRF API, users can view a full list of all logged post likes in the app.
+
+![Likes list](md_images/Screenshot%202024-03-24%20230148.png)
+
+##### Likes model fields:
+
+* owner
+* post
+* created_at
+
+If the user is logged in, the create form is displayed to create a new like. The post they want to like can be selected on the form. Users are unable to like the same post twice, as they'll receive an error message reading that they can't like the same post, and duplicate likes can't be created. If a user attempts to like a post they created, the API will return an error message saying that they can't like their own post and the like was not created. Just like above, logged in users are given functionality to delete their own likes.
+
