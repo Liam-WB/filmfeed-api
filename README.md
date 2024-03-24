@@ -255,3 +255,20 @@ Within the comments model list view in the DRF API, users can view a full list o
 
 In the development build, a filter box was implemented to filter the comments by the post they are linked to. If the user is logged in, a create form is displayed. Just like the likes create form, the user is given the option on what post to create their comment. On the comment post page the user is given edit and delete functionality if they own the comment. Just as before, a pre-populated form is returned for the edit functionality.
 
+#### Followers Data
+
+Within the followers model list view, users can view a full list of all logged profile followers in the app.
+
+![Followers list](md_images/Screenshot%202024-03-24%20232212.png)
+
+##### Followers model fields:
+
+* owner
+* followed
+* created_at
+
+##### Followers serializer fields:
+
+* followed_name
+
+Logged in users will receive a form for creating a new follower post. The user is able to select the profile for the follow submission. If a user tries to follow the same profile twice, they'll receive an error message reading that they're already following the selected profile, and the duplicate follow post is unable to be created. Once logged in, if the user views their own follow, additional Delete functionality becomes visible.
