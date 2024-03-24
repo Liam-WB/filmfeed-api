@@ -104,15 +104,52 @@ When entering the API, you'll be directed to the root route homepage, and greete
 
 #### Profile Data
 
+The profile model view will display a list of profiles, each containing their respective data fields. Each data field will return data (or null) depending on the data created via form submission, admin panel, superuser creation. The profiles list view can be accessed via the url/address bar. And individual profiles/ profile information can be displayed by adding "/profile_id" to the end of the url. As mentioned above, the create functionality is not included via the live backend project as the functionality is passed on to the frontend. The below message is shown upon errors finding profile data. The views are developed with generic views, and filter fields are developed with Django Filter Backend.
 
+![Data not found](md_images/Screenshot%202024-03-24%20211429.png)
+
+![Profiles page](md_images/Screenshot%202024-03-24%20221422.png)
+
+##### Profile model fields: ///
+
+* owner
+* created_at
+* updated_at
+* name
+* bio
+* image
+
+##### Profile model serializer fields:
+
+* is_owner
+* following_id
+* user_type
+* posts_count
+* followers_count
+* following_count
+
+##### Ordering / filtering methods, parameters:
+
+* owner__following__followed__profile
+* owner__followed__owner__profile
+* posts_count
+* followers_count
+* following_count
+* owner__following__created_at
+* owner__followed__created_at
+
+In the development build there is a search function for returning specific profiles and their data, as well as a filter box to filter profiles depending on the given parameters.
+
+* Filter option and results are returned for user's followers' profiles.
+* Filter option and results are returned for users' profiles that the user is following.
+
+In the development build the edit/update form is displayed for logged in users for changing profile data. A delete button is also displayed to logged in profile owners. The update form is pre populated with current profile information, and upon profile deletion all other profile data cascades to delete all unneeded and related data.
 
 #### Post Data
 
-The profile model view will display a list of posts, each containing their respective data fields. Each data field will return data (or null) depending on the data created via form submission, admin panel, superuser creation. The posts list view can be accessed via the url/address bar. And individual posts/ post information can be displayed by adding "/<post id>" to the end of the url. As mentioned above, the create functionality is not included via the live backend project as the functionality is passed on to the frontend. The below message is shown upon errors finding post data. The views are developed with generic views, and filter fields are developed with Django Filter Backend.
+The post model view will display a list of profiles, each containing their respective data fields. Each data field will return data (or null) depending on the data created via form submission, admin panel, superuser creation. The posts list view can be accessed via the url/address bar. And individual posts/ post information can be displayed by adding "/post_id" to the end of the url. As mentioned above, the create functionality is not included via the live backend project as the functionality is passed on to the frontend. The views are developed with generic views, and filter fields are developed with Django Filter Backend.
 
 ![Post list](md_images/Screenshot%202024-03-24%20211355.png)
-
-![Data not found](md_images/Screenshot%202024-03-24%20211429.png)
 
 ![Welcome message](md_images/Screenshot%202024-03-24%20211457.png)
 
