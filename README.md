@@ -104,4 +104,53 @@ When entering the API, you'll be directed to the root route homepage, and greete
 
 #### Profile Data
 
-The profile model view will display a list of posts, each containing their respective data fields. Each data field will return data (or null) depending on the data created via form submission, admin panel, superuser creation. The posts list view can be accessed via the url 
+
+
+#### Post Data
+
+The profile model view will display a list of posts, each containing their respective data fields. Each data field will return data (or null) depending on the data created via form submission, admin panel, superuser creation. The posts list view can be accessed via the url/address bar. And individual posts/ post information can be displayed by adding "/<post id>" to the end of the url. As mentioned above, the create functionality is not included via the live backend project as the functionality is passed on to the frontend. The below message is shown upon errors finding post data. The views are developed with generic views, and filter fields are developed with Django Filter Backend.
+
+![Post list](md_images/Screenshot%202024-03-24%20211355.png)
+
+![Data not found](md_images/Screenshot%202024-03-24%20211429.png)
+
+![Welcome message](md_images/Screenshot%202024-03-24%20211457.png)
+
+##### Post model fields:
+
+* owner
+* created_at
+* updated_at
+* title
+* content
+* image
+* movie
+
+##### Post model serializer fields:
+
+* is_owner
+* profile_id
+* profile_image
+* like_id
+* likes_count
+* comments_count
+
+##### Ordering / filtering methods, parameters:
+
+* owner__followed__owner__profile
+* likes__owner__profile
+* owner__profile
+* owner__username
+* title
+* movie
+* likes_count
+* comments_count
+* likes__created_at
+
+In the development build there is a search function for returning specific posts and their data, as well as a filter box to filter posts depending on the given parameters.
+
+* Posts who's user is followed by the logged in user will be displayed as the "feed" page in the frontend.
+* Posts which the user has liked by the user will be displayed as the "liked" page in the frontend.
+* All posts posted by the user or by a specific user will be displayed in the profile page.
+
+As mentioned above, in the development build the create form is displayed for logged in users for creating posts. A delete button and update form is also displayed to logged in post owners on their respective post pages. The update form is pre populated with current post information, and upon post deletion all other post data cascades to delete all unneeded and related data.
