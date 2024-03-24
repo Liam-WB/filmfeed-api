@@ -191,3 +191,27 @@ In the development build there is a search function for returning specific posts
 * All posts posted by the user or by a specific user will be displayed in the profile page.
 
 As mentioned above, in the development build the create form is displayed for logged in users for creating posts. A delete button and update form is also displayed to logged in post owners on their respective post pages. The update form is pre populated with current post information, and upon post deletion all other post data cascades to delete all unneeded and related data.
+
+#### Movie Data
+
+The movie model view will display all logged movies, each containing their respective data fields. Each data field will return data depending on the search query and ultimately, logged movie. The movies list view can be accessed via the url/address bar. And individual movies/ movie information can be displayed by adding "/movie_id" to the end of the url. 
+
+In this case, the movies model here does not currently store the site's logged movies as they are stored and attached to the post model for linked movie data, and although the movies can be fetched in the development build's added search bar for movies, for performance purposes it was more efficient to fetch the movie data via the frontend, seeing as the data is read only.
+
+![Movies list](md_images/Screenshot%202024-03-24%20224019.png)
+
+##### Movie model fields:
+
+* title
+* movie_data
+
+##### Post model serializer fields:
+
+* id
+
+##### Ordering / filtering methods, parameters:
+
+* title
+
+As mentioned above, there is a filter option to allow users to change their search queries depending on movie title. They are also able to log movies to the api by searching a movie title which in turn requests a movie with the closest name to the search query, via the omdb api which will then return the movie's information and categorise it in it's respective fields. The data returned is parsed as JSON, making the data easily readable.
+
