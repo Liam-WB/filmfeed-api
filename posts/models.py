@@ -11,7 +11,7 @@ class Post(models.Model):
     image = models.ImageField(
         upload_to='images/', default='../default_post_ygsaqt', blank=True
     )
-    movie = models.TextField(blank=True, default="")
+    movie = models.TextField(blank=True)
 
     class Meta:
         ordering = ['-created_at']
