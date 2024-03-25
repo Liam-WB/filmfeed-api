@@ -416,3 +416,26 @@ To clone and set up this project please follow the steps below:
 ## Testing
 
 Please click this [link](#) to view the filmfeed DRF API TEST.md file.
+
+## Credits
+
+* Github - Storing the code online
+* Codeanywhere - For writing the code.
+* Heroku - Used as the cloud-based platform to deploy the site.
+* Google Fonts - Finding the right fonts for this website.
+* Balsamiq - Used to create wireframes and schemes
+* Brandcrowd - For creating the logo.
+* Git - Version control
+* Favicon Generator - Used to create a favicon
+* CI Python Linter - Used to validate Python
+* Coolors - To create a colour palette
+
+## Content
+
+* All of the content is imaginary and written by the developer, myself, Liam Wartner Blake.
+
+## Acknowledgements
+
+* I would like to thank the tutors of Code Institute for their assistance in answering/helping me understand any code related questions, and guiding me throughout the project creation.
+* I would also like to extend my appreciation to the Slack community for their continuous engagement and willingness to share knowledge. The collaborative environment provided a platform for learning, troubleshooting, and gaining inspiration from fellow developers.
+* I would also like to extend my thanks to my mentor at Code Institute, Adeye Adegbenga for help and feedback, and advice when reviewing my code.
