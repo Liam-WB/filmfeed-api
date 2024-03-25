@@ -24,8 +24,8 @@ API Project (Heroku) [link](https://dashboard.heroku.com/apps/filmfeed-api).
 * Database skeleton
     * Database Design
 * Technologies
-* Testing
 * Deployment
+* Testing
 * Credits
 ---
 
@@ -33,7 +33,7 @@ API Project (Heroku) [link](https://dashboard.heroku.com/apps/filmfeed-api).
 
 This projected was planned, managed and developed with agile methodologies in mind to provide the developer with an efficient and effective development process. This was done by delivering small features to the project step by step, allowing for easier project management, organisation and allowing each function to be given the detail and attention that is required. I started by creating a kanban board, developed in github projects and used this as the main project management, and organisation to help visualise the project priorities, limit in progress, and maximise the work flow/efficiency to make the frontend development process simpler. The user stories were colour coded with green, yellow, purple, red to categorise functions depending on priority and work progress.
 
-Filmfeed DRF API kanban board [link](https://github.com/users/Liam-WB/projects/8/views/1)
+Filmfeed kanban board [link](https://github.com/users/Liam-WB/projects/8/views/1)
 
 ![Kanban](md_images/Screenshot%202024-03-24%20200746.png)
 
