@@ -415,7 +415,7 @@ To clone and set up this project please follow the steps below:
 
 ## Testing
 
-Please click this [link](#) to view the filmfeed DRF API TEST.md file.
+Please click this [link](/TESTS.md) to view the filmfeed DRF API TEST.md file.
 
 ## Credits
 
