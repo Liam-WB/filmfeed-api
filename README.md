@@ -287,6 +287,45 @@ The following ERD was concepted using the above data, models and fields. The rel
 
 As shown in the ERD all data types are directly connected to the users, and therefore if a user is deleted from the database, all related information is also removed from the database, as intended. Initially the movies model was named the watch history and would function slightly differently: It was planned to contain the logic for a component that would later be added within the profile page, as a secondary container for profile information, however it was later decided that a movie model, and movie data that connects to a post would be more beneficial as the movie implementation would be in the forefront of the website and more visible. With more time, a watchg history model would have been created, as shown in the project future consideration user stories category.
 
+## Technologies
+
+### Languages
+
+* Python - Provides the functionality and logic for DRF and the backend API.
+
+### Frameworks / software
+
+* Django Rest Framework - Web API development framework
+* PEP8 Validation - Python validation tool
+* Github - Used to host the repository, store commit history and project board containing user stories
+* Heroku - Cloud platform for project deployment
+* Cloudinary - Cloud based media hosting service
+
+### Libraries
+
+* asgiref - ASGI is a standard for Python asynchronous web apps and servers to communicate with each other, and positioned as an asynchronous successor to WSGI.
+* cloudinary - The Cloudinary Python SDK allows you to quickly and easily integrate your application with Cloudinary.
+* dj-database-url - This simple Django utility allows you to utilize the 12factor inspired DATABASE_URL environment variable to configure your Django application.
+* dj-rest-auth - Drop-in API endpoints for handling authentication securely in Django Rest Framework.
+* Django - A high-level Python web framework that encourages rapid development and clean, pragmatic design.
+* django-allauth - Integrated set of Django applications addressing authentication, registration, account management as well as 3rd party (social) account authentication.
+* django-cloudinary-storage - Django Cloudinary Storage is a Django package that facilitates integration with Cloudinary by implementing Django Storage API.
+* django-cors-headers - A Django App that adds Cross-Origin Resource Sharing (CORS) headers to responses. This allows in-browser requests to your Django application from other origins.
+* django-filter - Django-filter is a reusable Django application allowing users to declaratively add dynamic QuerySet filtering from URL parameters.
+* django-rest-framework - web-browsable Web APIs.
+* djangorestframework-simplejwt - Simple JWT is a JSON Web Token authentication plugin for the Django REST Framework.
+* gunicorn - Gunicorn ‘Green Unicorn’ is a Python WSGI HTTP Server for UNIX. It’s a pre-fork worker model ported from Ruby’s Unicorn project. The Gunicorn server is broadly compatible with various web frameworks, simply implemented, light on server resource usage, and fairly speedy.
+* oauthlib - OAuthLib is a framework which implements the logic of OAuth1 or OAuth2 without assuming a specific HTTP request object or web framework.
+* pillow - The Python Imaging Library adds image processing capabilities to your Python interpreter.
+* psycopg2 - Psycopg is the most popular PostgreSQL database adapter for the Python programming language.
+* PyJWT - A Python implementation of RFC 7519.
+* omdbapi - A Python wrapper for getting and receiving movies from the external open movie database API.
+* python-dotenv-Python-dotenv reads key-value pairs from a .env file and can set them as environment variables. It helps in the development of applications following the 12-factor principles.
+* python3-openid - OpenID support for modern servers and consumers.
+* pytz - This is a set of Python packages to support use of the OpenID decentralized identity system in your application, update to Python 3
+* requests-oauhlib - P rovides first-class OAuth library support for Requests.
+* sqlparse - sqlparse is a non-validating SQL parser for Python.
+
 ## Testing
 
 Please click this [link](#) to view the filmfeed DRF API TEST.md file.
