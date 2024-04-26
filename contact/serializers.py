@@ -1,7 +1,8 @@
 from rest_framework import serializers
-from .models import ContactMessage
+from .models import ContactUs
 
-class ContactFormSerializer(serializers.ModelSerializer):
+class ContactUsSerializer(serializers.ModelSerializer):
     class Meta:
-        model = ContactMessage
-        fields = ['email', 'message']
+        model = ContactUs
+        fields = ['id', 'email', 'message', 'created_at']
+        read_only_fields = ['created_at']

@@ -1,6 +1,7 @@
 from django.db import models
 
-class ContactMessage(models.Model):
+class ContactUs(models.Model):
+    id = models.AutoField(primary_key=True)
     email = models.EmailField()
     message = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
