@@ -11,6 +11,12 @@ class MovieList(generics.ListCreateAPIView):
     filter_backends = [filters.SearchFilter]
     search_fields = ['title']
 
+    def create(self, request, *args, **kwargs):
+        title = request.data.get('title')
+        if title and Movie.objects.filter(title=title).exists():
+            return Response({"error": "Movie already exists in database."}, status=status.HTTP_400_BAD_REQUEST)
+        return super().create(request, *args, **kwargs)
+
     def perform_create(self, serializer):
         title = self.request.data.get('title')
         if title:
