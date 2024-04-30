@@ -1,8 +1,9 @@
-from rest_framework import generics, filters
+from rest_framework import generics, filters, status
+from rest_framework.response import Response
+from rest_framework.views import APIView
 from .models import Movie
 from .serializers import MovieSerializer
-from rest_framework.response import Response
-
+from django.shortcuts import get_object_or_404
 
 class MovieList(generics.ListCreateAPIView):
     queryset = Movie.objects.all()
@@ -25,3 +26,14 @@ class MovieDetail(generics.RetrieveUpdateAPIView):
     """
     serializer_class = MovieSerializer
     queryset = Movie.objects.all()
+
+class MovieSearch(APIView):
+    def post(self, request, format=None):
+        title = request.data.get('title')
+        if title:
+            movie = Movie(title=title)
+            movie.save()
+            serializer = MovieSerializer(movie)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        else:
+            return Response({"error": "Title field is required."}, status=status.HTTP_400_BAD_REQUEST)

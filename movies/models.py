@@ -2,8 +2,6 @@ from django.db import models
 from django.db.models import JSONField
 import requests, os
 
-# TEMPORARY MODEL
-
 if os.path.exists('env.py'):
     import env
 
@@ -25,14 +23,8 @@ class Movie(models.Model):
             return None
 
     def save(self, *args, **kwargs):
-        movie_data = self.get_movie_data()
-        
-        if movie_data:
-            self.movie_data = movie_data
-            if 'Title' in movie_data:
-                self.title = movie_data.get('Title', '')
-                super().save(*args, **kwargs)
-            else:
-                print("Error: Movie requires all data to save.")
-        else:
-            print("Error: Movie not found.")
+        if not self.movie_data:
+            movie_data = self.get_movie_data()
+            if movie_data:
+                self.movie_data = movie_data
+        super().save(*args, **kwargs)
