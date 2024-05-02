@@ -29,3 +29,6 @@ class Movie(models.Model):
             if movie_data:
                 self.movie_data = movie_data
         super().save(*args, **kwargs)
+
+    class Meta:
+        ordering = ['-created_at']
