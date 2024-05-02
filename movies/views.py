@@ -11,12 +11,6 @@ class MovieList(generics.ListCreateAPIView):
     filter_backends = [filters.SearchFilter]
     search_fields = ['title']
 
-    def create(self, request, *args, **kwargs):
-        title = request.data.get('title')
-        if title and Movie.objects.filter(title=title).exists():
-            return Response({"error": "Movie already exists in database."}, status=status.HTTP_400_BAD_REQUEST)
-        return super().create(request, *args, **kwargs)
-
     def perform_create(self, serializer):
         title = self.request.data.get('title')
         if title:
@@ -27,5 +21,19 @@ class MovieList(generics.ListCreateAPIView):
             raise serializers.ValidationError("Title field is required.")
 
 class MovieDetail(generics.RetrieveUpdateAPIView):
+    """
+    Retrieve a movie.
+    """
     serializer_class = MovieSerializer
     queryset = Movie.objects.all()
+
+class MovieSearch(APIView):
+    def post(self, request, format=None):
+        title = request.data.get('title')
+        if title:
+            movie = Movie(title=title)
+            movie.save()
+            serializer = MovieSerializer(movie)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        else:
+            return Response({"error": "Title field is required."}, status=status.HTTP_400_BAD_REQUEST)
