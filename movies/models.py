@@ -30,5 +30,8 @@ class Movie(models.Model):
                 self.movie_data = movie_data
         super().save(*args, **kwargs)
 
+    def __str__(self):
+        return self.title
+
     class Meta:
         ordering = ['-created_at']
