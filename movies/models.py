@@ -9,8 +9,8 @@ OMDB_API_KEY = os.environ.get('OMDB_API_KEY')
 
 class Movie(models.Model):
     title = models.CharField(max_length=255)
-    movie_data = JSONField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
+    movie_data = JSONField(null=True, blank=True)
 
     def get_movie_data(self):
         url = f'http://www.omdbapi.com/?apikey={OMDB_API_KEY}&t={self.title}'
