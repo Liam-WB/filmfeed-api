@@ -13,9 +13,24 @@ class MovieList(generics.ListCreateAPIView):
 
     def create(self, request, *args, **kwargs):
         title = request.data.get('title')
-        if title and Movie.objects.filter(title=title).exists():
+        if title and not Movie.objects.filter(title=title).exists():
+             return super().create(request, *args, **kwargs)
+        elif title:
             return Response({"error": "Movie already exists in database."}, status=status.HTTP_400_BAD_REQUEST)
-        return super().create(request, *args, **kwargs)
+        else:
+            return Response({"error": "Title field is required."}, status=status.HTTP_400_BAD_REQUEST)
+
+    def update(self, request, *args, **kwargs):
+        title = request.data.get('title')
+        user_ratings = request.data.get('user_ratings')
+        if title and user_ratings is not None:
+            movie = get_object_or_404(Movie, title=title)
+            movie.user_ratings.append(int(user_ratings))
+            movie.save()
+            serializer = self.get_serializer(movie)
+            return Response(serializer.data)
+        else:
+            return Response({"error": "Title and user_ratings fields are required."}, status=status.HTTP_400_BAD_REQUEST)
 
     def perform_create(self, serializer):
         title = self.request.data.get('title')
