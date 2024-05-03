@@ -11,7 +11,7 @@ class Movie(models.Model):
     title = models.CharField(max_length=255)
     created_at = models.DateTimeField(auto_now_add=True)
     movie_data = JSONField(null=True, blank=True)
-    user_rating = models.DecimalField(max_digits=3, decimal_places=2, null=True, blank=True)
+    user_rating = models.IntegerField(null=True, blank=True)
 
     def get_movie_data(self):
         url = f'http://www.omdbapi.com/?apikey={OMDB_API_KEY}&t={self.title}'
