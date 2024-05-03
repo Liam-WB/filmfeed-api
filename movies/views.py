@@ -37,7 +37,7 @@ class MovieDetail(generics.RetrieveUpdateAPIView):
         instance = self.get_object()
         user_rating = request.data.get('user_rating')
         if user_rating is not None:
-            instance.user_ratings.append(user_rating)
+            instance.user_rating.append(user_rating)
             instance.update_average_rating()
         return super().update(request, *args, **kwargs)
 
