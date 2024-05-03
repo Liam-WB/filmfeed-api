@@ -43,6 +43,16 @@ class MovieDetail(generics.RetrieveUpdateAPIView):
             return Response(serializer.data)
         return super().update(request, *args, **kwargs)
 
+    def create(self, request, *args, **kwargs):
+        title = request.data.get('title')
+        if title and not Movie.objects.filter(title=title).exists():
+            movie = Movie(title=title)
+            movie.save()
+            serializer = MovieSerializer(movie)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        else:
+            return Response({"error": "Movie already exists in database."}, status=status.HTTP_400_BAD_REQUEST)
+
 class MovieSearch(APIView):
     def post(self, request, format=None):
         title = request.data.get('title')
