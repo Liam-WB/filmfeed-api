@@ -33,6 +33,14 @@ class MovieDetail(generics.RetrieveUpdateAPIView):
     serializer_class = MovieSerializer
     queryset = Movie.objects.all()
 
+    def update(self, request, *args, **kwargs):
+        instance = self.get_object()
+        user_rating = request.data.get('user_rating')
+        if user_rating is not None:
+            instance.user_ratings.append(user_rating)
+            instance.update_average_rating()
+        return super().update(request, *args, **kwargs)
+
 class MovieSearch(APIView):
     def post(self, request, format=None):
         title = request.data.get('title')
