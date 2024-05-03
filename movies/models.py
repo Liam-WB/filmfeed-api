@@ -10,7 +10,7 @@ if os.path.exists('env.py'):
 OMDB_API_KEY = os.environ.get('OMDB_API_KEY')
 
 class Movie(models.Model):
-    title = models.CharField(max_length=255)
+    title = models.CharField(max_length=255, unique=True)
     created_at = models.DateTimeField(auto_now_add=True)
     movie_data = JSONField(null=True, blank=True)
     user_ratings = JSONField(default=list, blank=True)
