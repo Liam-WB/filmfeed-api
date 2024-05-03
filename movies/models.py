@@ -13,11 +13,11 @@ class Movie(models.Model):
     title = models.CharField(max_length=255)
     created_at = models.DateTimeField(auto_now_add=True)
     movie_data = JSONField(null=True, blank=True)
-    user_rating = models.TextField(default='[]', blank=True)
+    user_ratings = models.TextField(default='[]', blank=True)
 
     @property
     def average_rating(self):
-        ratings = json.loads(self.user_rating)
+        ratings = json.loads(self.user_ratings)
         if ratings:
             return sum(ratings) / len(ratings)
         return 0
