@@ -37,8 +37,10 @@ class MovieDetail(generics.RetrieveUpdateAPIView):
         instance = self.get_object()
         user_ratings = request.data.get('user_ratings')
         if user_ratings is not None:
-            instance.user_ratings.append(user_ratings)
-            instance.update_average_rating()
+            instance.user_ratings.append(int(user_ratings))
+            instance.save()
+            serializer = self.get_serializer(instance)
+            return Response(serializer.data)
         return super().update(request, *args, **kwargs)
 
 class MovieSearch(APIView):
