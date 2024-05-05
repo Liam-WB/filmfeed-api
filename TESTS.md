@@ -13,7 +13,7 @@ Comprehensive testing has been done to ensure that the project's functions and f
 * Bugs
     * Resolved Bugs
     * Unresolved Bugs
-* Features Tests
+* Manual/features Tests
 
 ### Responsiveness tests
 
