@@ -4,7 +4,7 @@ Return to [README.md](/README.md)
 
 --
 
-Comprehensive testing has been done to ensure that the project's functions and features work flawlessly, and without issue.
+Comprehensive testing has been done throughout development to ensure that the project's functions and features work as intended, and without issue.
 
 ## Directory of Contents
 
