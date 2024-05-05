@@ -62,7 +62,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEV' in os.environ
 
-ALLOWED_HOSTS = ['localhost', 'filmfeed-api.herokuapp.com', 'filmfeed-api-d8205608db2c.herokuapp.com', '8000-liamwb-filmfeedapi-xudavtp4b2k.ws-eu110.gitpod.io', '8000-liamwb-filmfeedapi-85cc8upt989.ws-eu110.gitpod.io']
+ALLOWED_HOSTS = ['localhost', 'filmfeed-api.herokuapp.com', 'filmfeed-api-d8205608db2c.herokuapp.com', '8000-liamwb-filmfeedapi-85cc8upt989.ws-eu111.gitpod.io']
 
 
 # Application definition
